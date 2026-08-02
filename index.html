@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grupo Positano | Restaurantes</title>
+<meta name="description" content="Grupo Positano. Un grupo gastronómico detrás de Astra Steak & Grill, Positano Cocina Italiana y Krokante." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ["Montserrat", "sans-serif"], serif: ["Playfair Display", "serif"] },
+      colors: { positano: { dark: "#1B1B1B", brown: "#5A4636", beige: "#E9E1D5", cream: "#F7F4EF", gold: "#B08A52" } }
+    } }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: "Montserrat", sans-serif; color: #222; }
+  .serif { font-family: "Playfair Display", serif; }
+  .fade-up { opacity: 0; transform: translateY(35px); transition: opacity .8s ease, transform .8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 0; height: 1px; background: currentColor; transition: width .3s ease; }
+  .nav-link:hover::after { width: 100%; }
+  #mobileMenu { transform: translateY(-100%); transition: transform .4s ease; }
+  #mobileMenu.open { transform: translateY(0); }
+  body.menu-open { overflow: hidden; }
+  .counter { font-variant-numeric: tabular-numeric; }
+  .restaurant-tab { transition: all .3s ease; }
+  .restaurant-tab.active { background: #1B1B1B; color: white; }
+  .restaurant-tab.active:hover { background: #1B1B1B; }
+  .content-fade { animation: contentFade .5s ease; }
+  @keyframes contentFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body class="bg-white pt-24">
+
+<a id="inicio"></a>
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5 transition-all duration-300">
+  <div id="headerInner" class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between transition-all duration-300">
+    <a href="#inicio" class="text-black relative z-[60]">
+      <div class="font-semibold tracking-[.25em] text-sm">GRUPO</div>
+      <div class="font-semibold tracking-[.22em] text-xl -mt-1">POSITANO</div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[12px] uppercase tracking-wide text-gray-600">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#conocenos" class="nav-link">Conózcanos</a>
+      <a href="#restaurantes" class="nav-link">Restaurantes</a>
+      <a href="#Momentos" class="nav-link">Momentos</a>
+      <a href="#conoce" class="nav-link">Conócelos</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+      <a href="#trabaja" class="border border-black px-5 py-2.5 hover:bg-black hover:text-white transition">Trabaja con nosotros</a>
+    </nav>
+    <button id="menuButton" class="lg:hidden text-black relative z-[60]" aria-label="Abrir menú">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" class="fixed inset-0 z-50 bg-[#1B1B1B] text-white lg:hidden flex items-center justify-center">
+  <nav class="flex flex-col text-center gap-7 text-lg uppercase tracking-widest">
+    <a href="#inicio" class="mobile-link">Inicio</a>
+    <a href="#conocenos" class="mobile-link">Conózcanos</a>
+    <a href="#restaurantes" class="mobile-link">Restaurantes</a>
+    <a href="#Momentos" class="mobile-link">Momentos</a>
+    <a href="#conoce" class="mobile-link">Conócelos</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+    <a href="#trabaja" class="mobile-link">Trabaja con nosotros</a>
+  </nav>
+</div>
+
+<section id="conocenos" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="fade-up">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85" alt="Experiencia gastronómica Grupo Positano" class="w-full h-[560px] object-cover" />
+          <div class="absolute -bottom-6 -right-6 bg-positano-dark text-white p-8 hidden md:block">
+            <p class="text-xs uppercase tracking-[.3em]">Grupo</p>
+            <p class="serif text-3xl mt-1">Positano</p>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <p class="text-xs uppercase tracking-[.3em] text-positano-gold mb-5">Conózcanos</p>
+        <h2 class="serif text-4xl md:text-5xl leading-tight">Un grupo.<br /><span class="italic">Tres formas de disfrutar.</span></h2>
+        <p class="mt-8 text-gray-600 leading-8 text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mt-5 text-gray-600 leading-8 text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="#historia" class="inline-flex items-center mt-8 text-xs uppercase tracking-widest border-b border-black pb-2">Conoce nuestra historia<span class="ml-4">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-positano-dark text-white py-16">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+    <div class="text-center fade-up"><span class="counter block serif text-4xl md:text-5xl" data-target="3">0</span><p class="text-[10px] uppercase tracking-[.25em] text-white/60 mt-3">Restaurantes</p></div>
+    <div class="text-center fade-up"><span class="counter block serif text-4xl md:text-5xl" data-target="3">0</span><p class="text-[10px] uppercase tracking-[.25em] text-white/60 mt-3">Conceptos</p></div>
+    <div class="text-center fade-up"><span class="counter block serif text-4xl md:text-5xl" data-target="1">0</span><p class="text-[10px] uppercase tracking-[.25em] text-white/60 mt-3">Ciudad</p></div>
+    <div class="text-center fade-up"><span class="block serif text-4xl md:text-5xl">∞</span><p class="text-[10px] uppercase tracking-[.25em] text-white/60 mt-3">Experiencias</p></div>
+  </div>
+</section>
+
+<!-- ===== RESTAURANTES: Franja de marcas horizontal ===== -->
+<section id="restaurantes" class="bg-white overflow-hidden">
+  <div class="text-center max-w-2xl mx-auto fade-up pt-24 lg:pt-32 px-6">
+    <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Nuestros</p>
+    <h2 class="serif text-4xl md:text-5xl mt-4">Restaurantes</h2>
+    <p class="mt-6 text-sm text-gray-600 leading-7">Tres conceptos, tres experiencias y una misma pasión por la gastronomía.</p>
+  </div>
+
+  <!-- Franja de marcas -->
+  <div class="mt-20 lg:mt-28 fade-up">
+    <div class="bg-positano-dark py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+          
+          <!-- Astra -->
+          <a href="Astra.html" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
+            <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 lg:p-12 w-full max-w-sm border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500">
+              <img src="assets/Astra.jpeg" alt="Astra Steak & Grill" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
+              <div class="mt-6">
+                <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Astra</h3>
+                <p class="text-xs uppercase tracking-[.25em] text-white/60 mt-2">Steak & Grill</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Positano -->
+          <a href="Positano.html" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
+            <div class="bg-white rounded-2xl p-8 lg:p-12 w-full max-w-sm shadow-2xl group-hover:shadow-white/10 group-hover:-translate-y-2 transition-all duration-500">
+              <img src="assets/PositanoLogo.png" alt="Positano Cocina Italiana" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
+              <div class="mt-6">
+                <h3 class="serif text-2xl lg:text-3xl text-positano-dark font-semibold">Positano</h3>
+                <p class="text-xs uppercase tracking-[.25em] text-gray-500 mt-2">Cocina Italiana</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Krokante -->
+          <a href="https://www.instagram.com/krokanteibg/" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
+            <div class="bg-[#ee4736] rounded-2xl p-8 lg:p-12 w-full max-w-sm shadow-2xl group-hover:shadow-[#ee4736]/30 group-hover:-translate-y-2 transition-all duration-500">
+              <img src="assets/Krokante.png" alt="Krokante" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
+              <div class="mt-6">
+                <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Krokante</h3>
+                <p class="text-xs uppercase tracking-[.25em] text-white/80 mt-2">Casual Food</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea divisoria decorativa -->
+  <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+</section>
+
+<!-- ===== CONOCE NUESTROS RESTAURANTES: Menú interactivo ===== -->
+<section id="conoce" class="py-24 lg:py-32 bg-positano-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center fade-up mb-16">
+      <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Explora</p>
+      <h2 class="serif text-4xl md:text-5xl mt-4">Conoce nuestros restaurantes</h2>
+      <p class="mt-6 text-sm text-gray-600 leading-7 max-w-2xl mx-auto">Selecciona un restaurante para descubrir su esencia, ambiente y propuesta gastronómica única.</p>
+    </div>
+
+    <!-- Tabs/Menu de restaurantes -->
+    <div class="flex flex-col md:flex-row justify-center gap-4 mb-12 fade-up">
+      <button onclick="showRestaurant('astra')" id="tab-astra" class="restaurant-tab active px-8 py-4 text-xs uppercase tracking-widest border border-positano-dark hover:bg-positano-dark hover:text-white transition">
+        Astra
+      </button>
+      <button onclick="showRestaurant('positano')" id="tab-positano" class="restaurant-tab px-8 py-4 text-xs uppercase tracking-widest border border-positano-dark hover:bg-positano-dark hover:text-white transition">
+        Positano
+      </button>
+      <button onclick="showRestaurant('krokante')" id="tab-krokante" class="restaurant-tab px-8 py-4 text-xs uppercase tracking-widest border border-positano-dark hover:bg-positano-dark hover:text-white transition">
+        Krokante
+      </button>
+    </div>
+
+    <!-- Contenido dinámico -->
+    <div id="restaurant-content" class="fade-up">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+          <img id="restaurant-image" src="assets/AstraLocal.webp" alt="Astra" class="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105" />
+        </div>
+        <div class="lg:pl-8">
+          <p id="restaurant-tag" class="text-xs uppercase tracking-[.3em] text-positano-gold mb-3">Steak & Grill</p>
+          <h3 id="restaurant-title" class="serif text-4xl md:text-5xl mb-6">Astra - Steak & Grill</h3>
+          <p id="restaurant-description" class="text-sm text-gray-600 leading-8 mb-8">
+            Experiencia gastronómica de alta cocina centrada en cortes premium y parrilla. 
+            Un espacio elegante donde el fuego es el protagonista, creando sabores únicos 
+            y memorables. Ideal para ocasiones especiales y amantes de la buena carne.
+          </p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3 text-sm">
+              <svg class="w-5 h-5 text-positano-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Miércoles a Domingo · 12:00 pm - 10:00 pm</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <svg class="w-5 h-5 text-positano-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              <span>Ibagué, Tolima</span>
+            </div>
+          </div>
+          <a href="Astra_Menu.html" class="inline-block bg-positano-dark text-white px-8 py-3.5 text-xs uppercase tracking-widest hover:bg-positano-brown transition">Ver menú completo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historia" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center fade-up">
+      <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Nuestra historia</p>
+      <h2 class="serif text-4xl md:text-5xl mt-4">Un proyecto que crece.</h2>
+    </div>
+    <div class="relative max-w-4xl mx-auto mt-20">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-200"></div>
+      <div class="relative grid md:grid-cols-2 gap-10 mb-20 fade-up">
+        <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+          <span class="serif text-4xl">01</span>
+          <h3 class="text-lg font-semibold mt-3">El comienzo</h3>
+          <p class="text-sm text-gray-600 leading-7 mt-3">Grupo Positano comienza a consolidar una visión: desarrollar diferentes conceptos gastronómicos bajo una misma organización.</p>
+        </div>
+        <div></div>
+        <span class="absolute left-0 md:left-1/2 top-1 -translate-x-1/2 w-8 h-8 rounded-full bg-positano-dark border-4 border-white"></span>
+      </div>
+      <div class="relative grid md:grid-cols-2 gap-10 mb-20 fade-up">
+        <div></div>
+        <div class="md:pl-12 pl-12">
+          <span class="serif text-4xl">02</span>
+          <h3 class="text-lg font-semibold mt-3">Nuevos conceptos</h3>
+          <p class="text-sm text-gray-600 leading-7 mt-3">Nacen propuestas con personalidades diferentes, buscando llegar a distintos públicos y momentos de consumo.</p>
+        </div>
+        <span class="absolute left-0 md:left-1/2 top-1 -translate-x-1/2 w-8 h-8 rounded-full bg-positano-dark border-4 border-white"></span>
+      </div>
+      <div class="relative grid md:grid-cols-2 gap-10 fade-up">
+        <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+          <span class="serif text-4xl">03</span>
+          <h3 class="text-lg font-semibold mt-3">Grupo Positano</h3>
+          <p class="text-sm text-gray-600 leading-7 mt-3">Astra, Positano y Krokante hacen parte de una nueva etapa de crecimiento y consolidación gastronómica.</p>
+        </div>
+        <div></div>
+        <span class="absolute left-0 md:left-1/2 top-1 -translate-x-1/2 w-8 h-8 rounded-full bg-positano-dark border-4 border-white"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Momentos" class="relative min-h-[600px] flex items-center overflow-hidden">
+  <!-- Video de fondo embebido -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <iframe 
+      src="https://www.youtube.com/embed/SA53aGhD0oU?autoplay=1&mute=1&loop=1&playlist=SA53aGhD0oU&controls=0&rel=0&modestbranding=1&playsinline=1" 
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[56.25vw] min-h-[600px] min-w-[1067px]"
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      title="Momentos Grupo Positano">
+    </iframe>
+  </div>
+  
+  <!-- Overlay oscuro para dar legibilidad al texto -->
+  <div class="absolute inset-0 bg-black/55 z-10"></div>
+  
+  <!-- Contenido -->
+  <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-10 w-full text-white">
+    <div class="max-w-xl fade-up">
+      <p class="text-xs uppercase tracking-[.35em] text-white/70">Momentos</p>
+      <h2 class="serif text-5xl md:text-6xl mt-5">Momentos para celebrar.</h2>
+      <p class="mt-7 text-sm leading-8 text-white/80">Nuestro grupo también es un espacio para celebrar. Creamos experiencias gastronómicas para eventos sociales, empresariales y ocasiones especiales.</p>
+      <a href="#contacto" class="inline-block mt-9 border border-white px-8 py-3 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition">Ver mas</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="bonos" class="py-24 lg:py-28 bg-positano-dark text-white">
+  <div class="max-w-5xl mx-auto px-6 text-center fade-up">
+    <p class="text-xs uppercase tracking-[.4em] text-white/50">Regala una experiencia</p>
+    <h2 class="serif text-5xl md:text-6xl mt-5">Bonos de regalo</h2>
+    <p class="max-w-2xl mx-auto mt-7 text-sm leading-8 text-white/70">Sorprende a tus clientes, amigos, familiares o colaboradores con una experiencia gastronómica Grupo Positano.</p>
+    <a href="#contacto" class="inline-block mt-9 bg-white text-black px-9 py-4 text-xs uppercase tracking-widest hover:bg-positano-beige transition">Solicitar bono</a>
+  </div>
+</section>
+
+<section id="trabaja" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="fade-up">
+        <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Talento</p>
+        <h2 class="serif text-4xl md:text-5xl mt-4 leading-tight">Haz parte de<span class="italic"> nuestro equipo.</span></h2>
+        <p class="text-sm text-gray-600 leading-8 mt-7">Buscamos personas apasionadas por la gastronomía, el servicio y las experiencias. Si quieres crecer con nosotros, queremos conocerte.</p>
+        <a href="#contacto" class="inline-block mt-8 bg-black text-white px-8 py-3.5 text-xs uppercase tracking-widest">Quiero trabajar con ustedes</a>
+      </div>
+      <div class="fade-up">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1400&q=85" alt="Equipo gastronómico" class="w-full h-[500px] object-cover" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="py-24 lg:py-32 bg-positano-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center fade-up">
+      <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Contáctanos</p>
+      <h2 class="serif text-5xl md:text-6xl mt-4">Hablemos.</h2>
+      <p class="max-w-xl mx-auto text-sm text-gray-600 leading-7 mt-6">Para reservas, eventos, alianzas, oportunidades laborales o cualquier información sobre nuestras marcas.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16 mt-16">
+      <div class="fade-up">
+        <div class="space-y-8">
+          <div><span class="block text-[10px] uppercase tracking-[.25em] text-gray-400">Ciudad</span><p class="mt-2 text-sm">Ibagué, Tolima · Colombia</p></div>
+          <div><span class="block text-[10px] uppercase tracking-[.25em] text-gray-400">Restaurantes</span><p class="mt-2 text-sm">Astra · Positano · Krokante</p></div>
+          <div>
+            <span class="block text-[10px] uppercase tracking-[.25em] text-gray-400">Redes sociales</span>
+            <div class="flex gap-5 mt-3"><a href="https://www.instagram.com/krokanteibg/" class="text-sm hover:underline">Instagram</a></div>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm" class="space-y-6 fade-up">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div><label class="text-[10px] uppercase tracking-[.2em]">Nombre</label><input type="text" name="nombre" required class="w-full bg-transparent border-b border-black/20 py-3 mt-2 outline-none focus:border-black" /></div>
+          <div><label class="text-[10px] uppercase tracking-[.2em]">Teléfono</label><input type="tel" name="telefono" class="w-full bg-transparent border-b border-black/20 py-3 mt-2 outline-none focus:border-black" /></div>
+        </div>
+        <div><label class="text-[10px] uppercase tracking-[.2em]">Correo electrónico</label><input type="email" name="email" required class="w-full bg-transparent border-b border-black/20 py-3 mt-2 outline-none focus:border-black" /></div>
+        <div>
+          <label class="text-[10px] uppercase tracking-[.2em]">Motivo</label>
+          <select name="motivo" class="w-full bg-transparent border-b border-black/20 py-3 mt-2 outline-none">
+            <option>Información general</option><option>Reservas</option><option>Eventos</option><option>Bonos de regalo</option><option>Trabaja con nosotros</option><option>Alianzas comerciales</option>
+          </select>
+        </div>
+        <div><label class="text-[10px] uppercase tracking-[.2em]">Mensaje</label><textarea name="mensaje" rows="5" required class="w-full bg-transparent border-b border-black/20 py-3 mt-2 outline-none focus:border-black resize-none"></textarea></div>
+        <button type="submit" class="bg-black text-white px-9 py-4 text-xs uppercase tracking-widest hover:bg-positano-brown transition">Enviar mensaje</button>
+        <p id="formSuccess" class="hidden text-sm text-green-700">Gracias. Hemos recibido tu mensaje.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#171717] text-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div class="lg:col-span-2">
+        <div class="font-semibold tracking-[.25em] text-sm">GRUPO</div>
+        <div class="font-semibold tracking-[.22em] text-2xl">POSITANO</div>
+        <p class="text-white/50 text-sm leading-7 max-w-md mt-6">Un grupo gastronómico que crea conceptos, restaurantes y experiencias alrededor de la buena mesa.</p>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[.2em]">Restaurantes</h4>
+        <div class="space-y-3 mt-5 text-sm text-white/50">
+          <a href="Astra.html" class="block hover:text-white transition">Astra</a>
+          <a href="Positano.html" class="block hover:text-white transition">Positano</a>
+          <a href="https://www.instagram.com/krokanteibg/" class="block hover:text-white transition">Krokante</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs uppercase tracking-[.2em]">Grupo Positano</h4>
+        <div class="space-y-3 mt-5 text-sm text-white/50">
+          <a href="#conocenos" class="block hover:text-white transition">Conózcanos</a>
+          <a href="#contacto" class="block hover:text-white transition">Contacto</a>
+          <a href="#trabaja" class="block hover:text-white transition">Trabaja con nosotros</a>
+          <a href="#bonos" class="block hover:text-white transition">Bonos de regalo</a>
+          <a href="#conoce" class="block hover:text-white transition">Conócelos</a>
+          <a href="#eventos" class="block hover:text-white transition">Eventos</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-14 pt-7 flex flex-col md:flex-row justify-between gap-4">
+      <p class="text-[10px] text-white/40 uppercase tracking-wider">© 2026 Grupo Positano · Todos los derechos reservados</p>
+      <div class="flex flex-wrap gap-6 text-[10px] text-white/40 uppercase tracking-wider">
+        <a href="#">Política de privacidad</a><a href="#">Tratamiento de datos</a><a href="#">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Datos de los restaurantes
+const restaurants = {
+  astra: {
+    name: "Astra - Steak & Grill",
+    tag: "Steak & Grill",
+    image: "assets/AstraLocal.webp",
+    description: "Experiencia gastronómica de alta cocina centrada en cortes premium y parrilla. Un espacio elegante donde el fuego es el protagonista, creando sabores únicos y memorables. Ideal para ocasiones especiales y amantes de la buena carne.",
+    hours: "Miércoles a Domingo · 12:00 pm - 10:00 pm",
+    link: "Astra_Menu.html"
+  },
+  positano: {
+    name: "Positano",
+    tag: "Cocina Italiana",
+    image: "assets/localPositano.webp",
+    description: "Auténtica cocina italiana con masa madre, ingredientes importados y recetas tradicionales. Un ambiente cálido que transporta a la costa amalfitana, perfecto para compartir en familia o con amigos.",
+    hours: "Martes a Domingo · 12:00 pm - 9:30 pm",
+    link: "MenuPositano.html"
+  },
+  krokante: {
+    name: "Krokante",
+    tag: "Casual Food",
+    image: "assets/KrokanteLocal.webp",
+    description: "Comida casual con el pollo más crujiente de la ciudad. Ambiente joven, dinámico y perfecto para compartir con amigos. Propuesta innovadora que combina sabor, textura y diversión en cada bocado.",
+    hours: "Lunes a Domingo · 11:00 am - 10:00 pm",
+    link: "https://www.instagram.com/krokanteibg/"
+  }
+};
+
+// Función para mostrar restaurante
+function showRestaurant(restaurant) {
+  const data = restaurants[restaurant];
+  
+  // Actualizar tabs
+  document.querySelectorAll('.restaurant-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  document.getElementById(`tab-${restaurant}`).classList.add('active');
+  
+  // Actualizar contenido con animación
+  const content = document.getElementById('restaurant-content');
+  content.classList.remove('content-fade');
+  void content.offsetWidth; // Trigger reflow
+  content.classList.add('content-fade');
+  
+  document.getElementById('restaurant-image').src = data.image;
+  document.getElementById('restaurant-image').alt = data.name;
+  document.getElementById('restaurant-tag').textContent = data.tag;
+  document.getElementById('restaurant-title').textContent = data.name;
+  document.getElementById('restaurant-description').textContent = data.description;
+  
+  // Actualizar horarios y link
+  const detailsDiv = document.querySelector('#restaurant-content .space-y-4');
+  detailsDiv.innerHTML = `
+    <div class="flex items-center gap-3 text-sm">
+      <svg class="w-5 h-5 text-positano-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>${data.hours}</span>
+    </div>
+    <div class="flex items-center gap-3 text-sm">
+      <svg class="w-5 h-5 text-positano-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+      <span>Ibagué, Tolima</span>
+    </div>
+  `;
+  
+  const linkButton = document.querySelector('#restaurant-content a');
+  linkButton.href = data.link;
+  linkButton.textContent = restaurant === 'krokante' ? 'Síguenos en Instagram' : 'Ver menú completo';
+}
+
+const header = document.getElementById("header"), headerInner = document.getElementById("headerInner");
+window.addEventListener("scroll", () => {
+  const scrolled = window.scrollY > 60;
+  header.classList.toggle("shadow-md", scrolled);
+  headerInner.classList.toggle("py-3", scrolled);
+  headerInner.classList.toggle("py-5", !scrolled);
+});
+
+const menuButton = document.getElementById("menuButton"), mobileMenu = document.getElementById("mobileMenu");
+menuButton.addEventListener("click", () => { mobileMenu.classList.toggle("open"); document.body.classList.toggle("menu-open"); });
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("mobile-link")) { mobileMenu.classList.remove("open"); document.body.classList.remove("menu-open"); }
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll(".fade-up").forEach(el => revealObserver.observe(el));
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const counter = entry.target, target = Number(counter.dataset.target);
+    let current = 0;
+    const increment = Math.max(1, Math.ceil(target / 20));
+    (function update() {
+      current += increment;
+      counter.textContent = current >= target ? target : current;
+      if (current < target) requestAnimationFrame(update);
+    })();
+    counterObserver.unobserve(counter);
+  });
+}, { threshold: 0.7 });
+document.querySelectorAll(".counter").forEach(c => counterObserver.observe(c));
+
+const contactForm = document.getElementById("contactForm"), formSuccess = document.getElementById("formSuccess");
+contactForm.addEventListener("submit", (e) => { e.preventDefault(); formSuccess.classList.remove("hidden"); contactForm.reset(); });
+</script>
+</body>
+</html>
