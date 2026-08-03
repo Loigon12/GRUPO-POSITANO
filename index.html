@@ -38,6 +38,89 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ===== ESTILOS 3D NÍTIDOS ===== */
+  .perspective-1200 { perspective: 1400px; }
+  .transform-3d { transform-style: preserve-3d; }
+  
+  .carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 19rem;
+    height: 25rem;
+    margin-top: -12.5rem;
+    margin-left: -9.5rem;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    cursor: pointer;
+    user-select: none;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  @media (min-width: 1024px) {
+    .carousel-item {
+      width: 23rem;
+      height: 29rem;
+      margin-top: -14.5rem;
+      margin-left: -11.5rem;
+    }
+  }
+
+  /* Tarjeta Central (Activa) - Nitidez máxima */
+  .carousel-item.active {
+    transform: rotateY(0deg) translateZ(0px) scale(1);
+    z-index: 30;
+    opacity: 1;
+    filter: blur(0px);
+  }
+  
+  /* Tarjeta Izquierda */
+  .carousel-item.prev {
+    transform: rotateY(25deg) translateX(-58%) translateZ(-120px);
+    z-index: 20;
+    opacity: 0.55;
+    filter: blur(0.3px);
+  }
+  
+  /* Tarjeta Derecha */
+  .carousel-item.next {
+    transform: rotateY(-25deg) translateX(58%) translateZ(-120px);
+    z-index: 20;
+    opacity: 0.55;
+    filter: blur(0.3px);
+  }
+
+  @media (max-width: 767px) {
+    .carousel-item.prev {
+      transform: rotateY(20deg) translateX(-42%) translateZ(-90px);
+      opacity: 0.4;
+    }
+    .carousel-item.next {
+      transform: rotateY(-20deg) translateX(42%) translateZ(-90px);
+      opacity: 0.4;
+    }
+  }
+
+  .carousel-item.prev:hover, .carousel-item.next:hover {
+    opacity: 0.85;
+  }
+
+  /* Botón interno visible solo en la tarjeta activa */
+  .carousel-link {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+  }
+  
+  .carousel-item.active .carousel-link {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
 </style>
 </head>
 <body class="bg-white pt-24">
@@ -119,57 +202,81 @@
   </div>
 </section>
 
-<!-- ===== RESTAURANTES: Franja de marcas horizontal ===== -->
-<section id="restaurantes" class="bg-white overflow-hidden">
-  <div class="text-center max-w-2xl mx-auto fade-up pt-24 lg:pt-32 px-6">
+<!-- ===== RESTAURANTES: Carrusel 3D Optimizado y con Botones ===== -->
+<section id="restaurantes" class="bg-white overflow-hidden pt-24 lg:pt-32 pb-10">
+  <div class="text-center max-w-2xl mx-auto fade-up px-6 relative z-10 mb-10 lg:mb-16">
     <p class="text-xs uppercase tracking-[.3em] text-positano-gold">Nuestros</p>
     <h2 class="serif text-4xl md:text-5xl mt-4">Restaurantes</h2>
     <p class="mt-6 text-sm text-gray-600 leading-7">Tres conceptos, tres experiencias y una misma pasión por la gastronomía.</p>
   </div>
 
-  <!-- Franja de marcas -->
-  <div class="mt-20 lg:mt-28 fade-up">
-    <div class="bg-positano-dark py-16 lg:py-24">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
-          
-          <!-- Astra -->
-          <a href="Astra.html" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
-            <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 lg:p-12 w-full max-w-sm border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500">
-              <img src="assets/Astra.jpeg" alt="Astra Steak & Grill" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
-              <div class="mt-6">
-                <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Astra</h3>
-                <p class="text-xs uppercase tracking-[.25em] text-white/60 mt-2">Steak & Grill</p>
-              </div>
-            </div>
-          </a>
+  <div class="relative w-full h-[34rem] lg:h-[42rem] perspective-1200 bg-positano-dark flex items-center justify-center transform-3d fade-up overflow-hidden shadow-inner">
+    
+    <!-- Botón Izquierdo -->
+    <button onclick="prevCarousel()" class="absolute left-4 lg:left-12 z-50 bg-white/10 hover:bg-white/25 text-white p-3 lg:p-4 rounded-full backdrop-blur-md transition border border-white/20 shadow-lg flex items-center justify-center" aria-label="Anterior">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
 
-          <!-- Positano -->
-          <a href="Positano.html" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
-            <div class="bg-white rounded-2xl p-8 lg:p-12 w-full max-w-sm shadow-2xl group-hover:shadow-white/10 group-hover:-translate-y-2 transition-all duration-500">
-              <img src="assets/PositanoLogo.png" alt="Positano Cocina Italiana" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
-              <div class="mt-6">
-                <h3 class="serif text-2xl lg:text-3xl text-positano-dark font-semibold">Positano</h3>
-                <p class="text-xs uppercase tracking-[.25em] text-gray-500 mt-2">Cocina Italiana</p>
-              </div>
-            </div>
-          </a>
+    <!-- Botón Derecho -->
+    <button onclick="nextCarousel()" class="absolute right-4 lg:right-12 z-50 bg-white/10 hover:bg-white/25 text-white p-3 lg:p-4 rounded-full backdrop-blur-md transition border border-white/20 shadow-lg flex items-center justify-center" aria-label="Siguiente">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
 
-          <!-- Krokante -->
-          <a href="https://www.instagram.com/krokanteibg/" class="group flex-1 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-105">
-            <div class="bg-[#ee4736] rounded-2xl p-8 lg:p-12 w-full max-w-sm shadow-2xl group-hover:shadow-[#ee4736]/30 group-hover:-translate-y-2 transition-all duration-500">
-              <img src="assets/Krokante.png" alt="Krokante" class="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto" />
-              <div class="mt-6">
-                <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Krokante</h3>
-                <p class="text-xs uppercase tracking-[.25em] text-white/80 mt-2">Casual Food</p>
-              </div>
-            </div>
-          </a>
-
+    <!-- Contenedor del Carrusel -->
+    <div class="relative w-full max-w-7xl mx-auto h-full flex items-center justify-center transform-3d">
+      
+      <!-- Astra -->
+      <div class="carousel-item prev" onclick="setCarousel(0)">
+        <div class="w-full h-full bg-[#111] backdrop-blur-md rounded-2xl border border-white/10 p-8 flex flex-col items-center justify-center shadow-2xl transition-all duration-500">
+          <div class="w-28 h-28 lg:w-40 lg:h-40 flex items-center justify-center">
+            <img src="assets/Astra.jpeg" alt="Astra Steak & Grill" class="max-w-full max-h-full object-contain drop-shadow-2xl" />
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Astra</h3>
+            <p class="text-[10px] lg:text-xs uppercase tracking-[.25em] text-white/60 mt-2">Steak & Grill</p>
+          </div>
+          <a href="Astra.html" class="mt-6 border border-white/30 text-white text-[10px] uppercase tracking-widest px-8 py-3 rounded-sm hover:bg-white hover:text-black transition carousel-link">Ver más</a>
         </div>
       </div>
+
+      <!-- Positano -->
+      <div class="carousel-item active" onclick="setCarousel(1)">
+        <div class="w-full h-full bg-white rounded-2xl p-8 flex flex-col items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500">
+          <div class="w-28 h-28 lg:w-40 lg:h-40 flex items-center justify-center">
+            <img src="assets/PositanoLogo.png" alt="Positano Cocina Italiana" class="max-w-full max-h-full object-contain drop-shadow-md" />
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="serif text-2xl lg:text-3xl text-positano-dark font-semibold">Positano</h3>
+            <p class="text-[10px] lg:text-xs uppercase tracking-[.25em] text-gray-500 mt-2">Cocina Italiana</p>
+          </div>
+          <a href="Positano.html" class="mt-6 border border-positano-dark text-positano-dark text-[10px] uppercase tracking-widest px-8 py-3 rounded-sm hover:bg-positano-dark hover:text-white transition carousel-link">Ver más</a>
+        </div>
+      </div>
+
+      <!-- Krokante -->
+      <div class="carousel-item next" onclick="setCarousel(2)">
+        <div class="w-full h-full bg-[#ee4736] rounded-2xl p-8 flex flex-col items-center justify-center shadow-2xl transition-all duration-500">
+          <div class="w-28 h-28 lg:w-40 lg:h-40 flex items-center justify-center">
+            <img src="assets/Krokante.png" alt="Krokante" class="max-w-full max-h-full object-contain drop-shadow-2xl" />
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="serif text-2xl lg:text-3xl text-white font-semibold">Krokante</h3>
+            <p class="text-[10px] lg:text-xs uppercase tracking-[.25em] text-white/80 mt-2">Casual Food</p>
+          </div>
+          <a href="https://www.instagram.com/krokanteibg/" target="_blank" class="mt-6 border border-white/50 text-white text-[10px] uppercase tracking-widest px-8 py-3 rounded-sm hover:bg-white hover:text-[#ee4736] transition carousel-link">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Indicadores -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-40">
+      <button class="w-2.5 h-2.5 rounded-full bg-white/30 transition-colors carousel-dot" aria-label="Ver Astra" onclick="setCarousel(0)"></button>
+      <button class="w-2.5 h-2.5 rounded-full bg-white transition-colors carousel-dot" aria-label="Ver Positano" onclick="setCarousel(1)"></button>
+      <button class="w-2.5 h-2.5 rounded-full bg-white/30 transition-colors carousel-dot" aria-label="Ver Krokante" onclick="setCarousel(2)"></button>
     </div>
   </div>
+</section>
 
   <!-- Línea divisoria decorativa -->
   <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
@@ -501,6 +608,66 @@ document.querySelectorAll(".counter").forEach(c => counterObserver.observe(c));
 
 const contactForm = document.getElementById("contactForm"), formSuccess = document.getElementById("formSuccess");
 contactForm.addEventListener("submit", (e) => { e.preventDefault(); formSuccess.classList.remove("hidden"); contactForm.reset(); });
+
+let currentCarouselIndex = 1;
+  let carouselInterval;
+  const carouselItems = document.querySelectorAll('.carousel-item');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+
+  function updateCarouselState() {
+    carouselItems.forEach((item, index) => {
+      item.classList.remove('active', 'prev', 'next');
+      
+      if (carouselDots[index]) {
+        carouselDots[index].classList.remove('bg-white');
+        carouselDots[index].classList.add('bg-white/30');
+      }
+
+      if (index === currentCarouselIndex) {
+        item.classList.add('active');
+        if(carouselDots[index]) {
+          carouselDots[index].classList.remove('bg-white/30');
+          carouselDots[index].classList.add('bg-white');
+        }
+      } else if (
+        index === currentCarouselIndex - 1 || 
+        (currentCarouselIndex === 0 && index === carouselItems.length - 1)
+      ) {
+        item.classList.add('prev');
+      } else {
+        item.classList.add('next');
+      }
+    });
+  }
+
+  function setCarousel(index) {
+    currentCarouselIndex = index;
+    updateCarouselState();
+    resetCarouselInterval();
+  }
+
+  function nextCarousel() {
+    currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length;
+    updateCarouselState();
+    resetCarouselInterval();
+  }
+
+  function prevCarousel() {
+    currentCarouselIndex = (currentCarouselIndex - 1 + carouselItems.length) % carouselItems.length;
+    updateCarouselState();
+    resetCarouselInterval();
+  }
+
+  function resetCarouselInterval() {
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(() => {
+      nextCarousel();
+    }, 6000);
+  }
+
+  // Inicializar
+  updateCarouselState();
+  resetCarouselInterval();
 </script>
 </body>
 </html>
