@@ -6,7 +6,7 @@
     <title>Astra Steak & Grill | Ibagué</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpg" href="astra/Astra.jpeg">
+    <link rel="icon" type="image/jpg" href="assets/Astra/Astra.jpeg">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f5f5f5; }
         h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
@@ -29,63 +29,61 @@
         ::-webkit-scrollbar-thumb { background: #333; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
         /* Bloquear scroll mientras carga */
-body.loading-active {
-    overflow: hidden;
-}
+        body.loading-active { overflow: hidden; }
 
-/* Contenedor del Loader */
-#loader-wrapper {
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-}
+        /* Contenedor del Loader */
+        #loader-wrapper {
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+        }
 
-/* Clase para ocultar el loader suavemente */
-.loader-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+        /* Clase para ocultar el loader suavemente */
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
-/* Efecto de "respiración" para el logo del tigre */
-.tiger-breath {
-    animation: breath 2.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-}
+        /* Efecto de "respiración" para el logo del tigre */
+        .tiger-breath {
+            animation: breath 2.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-@keyframes breath {
-    0% { 
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05)); 
-        transform: scale(0.98); 
-    }
-    100% { 
-        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2)); 
-        transform: scale(1.02); 
-    }
-}
+        @keyframes breath {
+            0% { 
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05)); 
+                transform: scale(0.98); 
+            }
+            100% { 
+                filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2)); 
+                transform: scale(1.02); 
+            }
+        }
 
-/* Línea de progreso minimalista */
-.progress-line-container {
-    width: 200px;
-    height: 1px;
-    background: #222;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-}
+        /* Línea de progreso minimalista */
+        .progress-line-container {
+            width: 200px;
+            height: 1px;
+            background: #222;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
 
-.progress-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #fff;
-    width: 0%;
-    animation: loading-progress 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
+        .progress-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #fff;
+            width: 0%;
+            animation: loading-progress 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
 
-@keyframes loading-progress {
-    0% { width: 0%; left: 0; }
-    50% { width: 100%; left: 0; }
-    100% { width: 100%; left: 100%; }
-}
+        @keyframes loading-progress {
+            0% { width: 0%; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 100%; left: 100%; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-gray-700 selection:text-white">
@@ -123,10 +121,11 @@ body.loading-active {
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="Astra.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Experiencia</a>
+                    <a href="Astra.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Inicio</a>
+                    <a href="Experiencia_Astra.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Experiencia</a>
                     <a href="Astra_Menu.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Menú</a>
-                    <a href="Astra.html#reservas" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Reservas</a>
-                    <a href="Astra.html#contacto" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Contacto</a>
+                    <a href="Reservas_Astra.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Reservas</a>
+                    <a href="Contacto_Astra.html" class="text-xs uppercase tracking-widest text-gray-400 hover:text-white transition">Contacto</a>
                 </div>
 
                 <!-- Hamburger Button (Mobile) -->
@@ -156,10 +155,11 @@ body.loading-active {
             <span class="text-[10px] tracking-[0.25em] uppercase text-gray-400 mt-2">Steak & Grill</span>
         </div>
         
-        <a href="Astra.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Experiencia</a>
+        <a href="Astra.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Inicio</a>
+        <a href="Experiencia_Astra.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Experiencia</a>
         <a href="Astra_Menu.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Menú</a>
-        <a href="Astra.html#reservas" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Reservas</a>
-        <a href="Astra.html#contacto" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Contacto</a>
+        <a href="Reservas_Astra.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Reservas</a>
+        <a href="Contacto_Astra.html" class="mobile-link text-lg uppercase tracking-widest text-gray-300 hover:text-white transition">Contacto</a>
     </div>
 
     <!-- Hero -->
@@ -167,11 +167,12 @@ body.loading-active {
         <div class="px-4 mt-16">
             <h1 class="text-5xl md:text-7xl font-serif mb-4 uppercase tracking-widest text-white drop-shadow-lg">Steak & Grill</h1>
             <p class="text-sm md:text-base text-gray-400 mb-10 tracking-[0.3em] uppercase">La Macarena Alta, Ibagué - Tolima</p>
-            <a href="#reservas" class="btn-gourmet px-10 py-4 text-xs tracking-[0.2em] uppercase inline-block">Reserva tu mesa</a>
+            <!-- Botón solo para moviles -->
+            <button id="hero-services-btn" class="btn-gourmet px-10 py-4 text-xs tracking-[0.2em] uppercase inline-block cursor-pointer">Nuestros servicios</button>
         </div>
     </section>
 
-    <!-- Experience / About -->
+    <!-- Catologo / Experiencia -->
     <section id="experiencia" class="py-32 bg-[#0a0a0a]">
         <div class="max-w-4xl mx-auto text-center px-4">
             <h2 class="text-3xl font-serif mb-6 uppercase tracking-widest text-white">Experiencias Foodies</h2>
@@ -182,100 +183,54 @@ body.loading-active {
         </div>
     </section>
 
-<!-- Menu -->
-    <section id="menu" class="py-32 bg-[#111]">
+    <!-- Nuestra Sede -->
+    <section id="sede" class="py-32 bg-[#111]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-20">
-                <h2 class="text-3xl font-serif mb-4 uppercase tracking-widest text-white">Nuestro Menú</h2>
+                <h2 class="text-3xl font-serif mb-4 uppercase tracking-widest text-white">Nuestra Sede</h2>
                 <div class="h-px w-16 bg-gray-600 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-16">
-                <!-- Cortes -->
-                <div>
-                    <h3 class="text-xl font-serif border-b border-gray-800 pb-4 mb-8 uppercase tracking-widest text-gray-300">Cortes Premium</h3>
-                    <div class="space-y-10">
-                        <div class="group cursor-pointer">
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h4 class="text-lg font-serif text-white group-hover:text-gray-300 transition">Lomo Acevichado</h4>
-                            </div>
-                            <p class="text-sm text-gray-500 font-light">Medallones lomo fino sobre una base de plátano maduro, coronado con ceviche cremoso de la casa.</p>
-                        </div>
-                        <div class="group cursor-pointer">
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h4 class="text-lg font-serif text-white group-hover:text-gray-300 transition">Entrecot Parisino</h4>
-                            </div>
-                            <p class="text-sm text-gray-500 font-light">Corte de carne vacuno fileteado, bañado por nuestra salsa de la casa, al mejor estilo parisino. Acompañado de papa a la francesa.</p>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Columna Fotografía -->
+                <div class="relative group">
+                    <div class="absolute -inset-4 border border-gray-800 scale-95 transition-transform duration-500 group-hover:scale-100 hidden md:block"></div>
+                    <img src="assets/AstraLocal.webp" alt="Sede Astra Steak & Grill" class="w-full h-[400px] md:h-[500px] object-cover rounded-sm shadow-2xl relative z-10 filter brightness-90 contrast-125 transition duration-500 group-hover:brightness-100">
                 </div>
 
-                <!-- Burgers (Burger Master Feature) -->
-                <div>
-                    <h3 class="text-xl font-serif border-b border-gray-800 pb-4 mb-8 uppercase tracking-widest text-gray-300">Grill & Burgers</h3>
-                    <div class="space-y-10">
-                        <div class="group cursor-pointer relative">
-                            <div class="absolute -left-6 top-1 w-1.5 h-1.5 bg-white rounded-full"></div>
-                            <div class="flex flex-wrap items-center gap-3 mb-2">
-                                <h4 class="text-lg font-serif text-white group-hover:text-gray-300 transition">White Tiger Burger</h4>
-                                <span class="text-[10px] border border-gray-600 text-gray-400 px-2 py-0.5 uppercase tracking-wider">Burger Master 2026</span>
+                <!-- Columna Información -->
+                <div class="space-y-12 flex flex-col justify-center px-4 md:px-0">
+                    <div>
+                        <h3 class="text-xl font-serif border-b border-gray-800 pb-4 mb-6 uppercase tracking-widest text-gray-300">Ubicación</h3>
+                        <p class="text-gray-300 font-light text-2xl mb-2">La Macarena Parte Alta</p>
+                        <p class="text-sm text-gray-500 font-light tracking-widest uppercase">Ibagué, Tolima</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-serif border-b border-gray-800 pb-4 mb-6 uppercase tracking-widest text-gray-300">Horario de Atención</h3>
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex items-center gap-4 text-gray-300 font-light text-xl">
+                                <span>Miércoles a Domingo</span>
                             </div>
-                            <p class="text-sm text-gray-500 font-light">Pan prezzel, salsa de la casa, blend artesanal de Angus certificado, queso cheddar, cremoso de salsa entrecot a base de queso philadelphia, cebolla encurtida para darle ese toque de dulce que no te puedes resistir, Krokante de papa artesanal. Acompañada de papa a la francesa.</p>
-                        </div>
-                        <div class="group cursor-pointer">
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h4 class="text-lg font-serif text-white group-hover:text-gray-300 transition">Classic Burger</h4>
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                <span class="text-lg text-gray-400 font-light tracking-widest">12:00 PM - 10:00 PM</span>
                             </div>
-                            <p class="text-sm text-gray-500 font-light">Pan brioche, Blend artesanal de Angus certificado, queso cheddar, tomate fresco, cogollo europeo, cebolla fresca y pepinillo. Acompañada de papa a la francesa.</p>
                         </div>
                     </div>
-                    <a href="Astra_Menu.html"><button class="btn-gourmet px-10 py-4 text-xs tracking-[0.2em] uppercase mt-12 mx-auto block hover:bg-white hover:text-black transition-colors duration-300">Ver Menú Completo</button></a>
+
+                    <div class="pt-6">
+                        <a href="Astra_Menu.html" class="btn-gourmet px-10 py-4 text-xs tracking-[0.2em] uppercase inline-block text-center w-full md:w-auto hover:bg-white hover:text-black transition-colors duration-300">
+                            Conoce Nuestro Menú
+                        </a>
+                    </div>
                 </div>
-                
             </div>
         </div>
     </section>
-
-    <!-- Reservations -->
-    <section id="reservas" class="py-32 bg-[#0a0a0a]">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif mb-4 uppercase tracking-widest text-white">Haz tu Reserva</h2>
-                <div class="h-px w-16 bg-gray-600 mx-auto mb-6"></div>
-                <p class="text-gray-400 font-light">Asegura tu lugar y prepárate para vivir una experiencia gastronómica de alto nivel.</p>
-            </div>
-            
-            <form id="reserva-form" class="space-y-6 bg-[#111] p-8 md:p-14 border border-gray-900 shadow-2xl relative overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Nombre completo</label>
-                        <input id="reserva-nombre" type="text" class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-white transition" placeholder="Tu nombre" required>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Teléfono</label>
-                        <input id="reserva-telefono" type="tel" class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-white transition" placeholder="+57" required>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Fecha</label>
-                        <input id="reserva-fecha" type="date" class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-white transition" required>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Hora</label>
-                        <input id="reserva-hora" type="time" class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-white transition" required>
-                    </div>
-                </div>
-                <div class="relative z-10 pt-4">
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2">Solicitudes Especiales</label>
-                    <textarea id="reserva-solicitudes" class="w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-white transition resize-none h-16" placeholder="¿Alguna alergia o motivo de celebración?"></textarea>
-                </div>
-                <button type="submit" class="w-full btn-gourmet py-5 text-xs tracking-widest uppercase mt-8 relative z-10 hover:bg-white hover:text-black transition-colors duration-300">Confirmar Reserva</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer / Contact -->
-    <footer id="contacto" class="bg-[#050505] pt-24 pb-12 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-16 mb-20 text-center md:text-left">
+    <footer class="bg-[#050505] pt-24 pb-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12 mb-20 text-center md:text-left">
             <div>
                 <div class="flex flex-col items-center md:items-start mb-6">
                     <div class="flex items-center gap-4 mb-2">
@@ -285,6 +240,16 @@ body.loading-active {
                     <span class="text-[10px] tracking-[0.25em] uppercase text-gray-500 ml-0 md:ml-16">Steak & Grill</span>
                 </div>
                 <p class="text-gray-500 font-light text-sm leading-loose mt-4">Experiencias foodies, fuego y técnica.<br>La casa del tigre blanco en Ibagué.</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-sm mb-6 uppercase tracking-widest text-white">Enlaces Rápidos</h4>
+                <ul class="space-y-3 font-light text-sm">
+                    <li><a href="Astra.html" class="text-gray-500 hover:text-white transition">Inicio</a></li>
+                    <li><a href="Experiencia_Astra.html" class="text-gray-500 hover:text-white transition">Experiencia</a></li>
+                    <li><a href="Astra_Menu.html" class="text-gray-500 hover:text-white transition">Menú</a></li>
+                    <li><a href="Reservas_Astra.html" class="text-gray-500 hover:text-white transition">Reservas</a></li>
+                    <li><a href="Contacto_Astra.html" class="text-gray-500 hover:text-white transition">Contacto</a></li>
+                </ul>
             </div>
             <div>
                 <h4 class="font-serif text-sm mb-6 uppercase tracking-widest text-white">Ubicación</h4>
@@ -323,6 +288,7 @@ body.loading-active {
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const heroServicesBtn = document.getElementById('hero-services-btn');
 
         function toggleMobileMenu() {
             mobileMenu.classList.toggle('translate-x-full');
@@ -330,59 +296,29 @@ body.loading-active {
 
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        
+        // Vincular el botón "Nuestros servicios" para abrir el menú móvil
+        if (heroServicesBtn) {
+            heroServicesBtn.addEventListener('click', toggleMobileMenu);
+        }
 
         // Cierra el menú automáticamente al hacer clic en un enlace
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMobileMenu);
         });
 
-        // Lógica para enviar reserva por WhatsApp (Corregida)
-        document.getElementById('reserva-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Obtener los valores de los inputs
-            const nombre = document.getElementById('reserva-nombre').value;
-            const telefono = document.getElementById('reserva-telefono').value;
-            const fecha = document.getElementById('reserva-fecha').value;
-            const hora = document.getElementById('reserva-hora').value;
-            const solicitudes = document.getElementById('reserva-solicitudes').value;
-
-            // Construir el mensaje en texto plano usando template literals
-            let textoMensaje = `¡Hola Astra Steak & Grill! Me gustaría hacer una reserva:\n\n`;
-            textoMensaje += `*Nombre:* ${nombre}\n`;
-            textoMensaje += `*Teléfono:* ${telefono}\n`;
-            textoMensaje += `*Fecha:* ${fecha}\n`;
-            textoMensaje += `*Hora:* ${hora}\n`;
-            
-            if (solicitudes.trim() !== '') {
-                textoMensaje += `*Solicitudes Especiales:* ${solicitudes}`;
-            }
-
-            // Número de WhatsApp del restaurante (sin el '+')
-            const numeroWhatsApp = "573160407751";
-            
-            // Crear el enlace a WhatsApp codificando el mensaje completo de forma segura
-            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoMensaje)}`;
-
-            // Abrir en una nueva pestaña
-            window.open(url, '_blank');
-        });
         // Manejo de la pantalla de carga
-document.addEventListener("DOMContentLoaded", () => {
-    // Bloqueamos el scroll inicial
-    document.body.classList.add('loading-active');
-});
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add('loading-active');
+        });
 
-window.addEventListener("load", () => {
-    const loader = document.getElementById('loader-wrapper');
-    
-    // Le damos un pequeño retraso (2 segundos) para que la animación 
-    // de la barra de progreso termine fluidamente antes de revelar el sitio.
-    setTimeout(() => {
-        loader.classList.add('loader-hidden');
-        document.body.classList.remove('loading-active');
-    }, 2000); 
-});
+        window.addEventListener("load", () => {
+            const loader = document.getElementById('loader-wrapper');
+            setTimeout(() => {
+                loader.classList.add('loader-hidden');
+                document.body.classList.remove('loading-active');
+            }, 1000); 
+        });
     </script>
 </body>
 </html>
