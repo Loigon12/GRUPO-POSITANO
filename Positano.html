@@ -111,14 +111,29 @@ body.loading-active {
 @keyframes revealUp {
     to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 }
+
+/* Menú de opciones en pantalla de carga */
+.loader-menu-item {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: loaderMenuIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes loaderMenuIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+.loader-skip {
+    opacity: 0;
+    animation: loaderMenuIn 0.7s ease forwards;
+    animation-delay: 1.9s;
+}
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 <!-- Pantalla de Carga Original Positano -->
-<div id="positano-loader" class="fixed inset-0 flex flex-col items-center justify-center">
+<div id="positano-loader" class="fixed inset-0 flex flex-col items-center justify-center px-6 py-10 overflow-y-auto">
     
     <!-- Contenedor del Círculo Animado y Logo -->
-    <div class="relative flex items-center justify-center w-64 h-64 mb-6">
+    <div class="relative flex items-center justify-center w-40 h-40 md:w-56 md:h-56 mb-4 md:mb-6 shrink-0">
         
         <!-- SVG que simula el trazo de un plato/pizza -->
         <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -129,15 +144,37 @@ body.loading-active {
         </svg>
         
         <!-- Logo Positano -->
-        <img src="assets/Positano/positano.jpg" alt="Positano Cocina Italiana" class="w-48 h-auto object-contain logo-zoom border border-brandDark/10 rounded-full shadow-lg bg-white p-1">
+        <img src="assets/Positano/positano.jpg" alt="Positano Cocina Italiana" class="w-28 md:w-40 h-auto object-contain logo-zoom border border-brandDark/10 rounded-full shadow-lg bg-white p-1">
     </div>
 
     <!-- Texto inmersivo con enmascaramiento -->
-    <div class="overflow-hidden p-2">
-        <h2 class="font-script text-3xl md:text-4xl text-brandDark text-reveal-mask transform translate-y-2 opacity-90">
+    <div class="overflow-hidden p-2 shrink-0">
+        <h2 class="font-script text-2xl md:text-4xl text-brandDark text-reveal-mask transform translate-y-2 opacity-90">
             Preparando la leña...
         </h2>
     </div>
+
+    <!-- Menú de opciones a pantalla completa -->
+    <nav class="w-full max-w-md md:max-w-2xl mt-6 md:mt-10 shrink-0" aria-label="Accesos rápidos">
+        <div class="grid grid-cols-2 gap-3 md:gap-5">
+            <a href="MenuPositano.html" class="loader-menu-item group flex flex-col items-center justify-center text-center gap-1 py-5 md:py-7 rounded-2xl border border-brandDark/10 bg-white/60 hover:bg-brandDark hover:border-brandDark transition-all duration-300" style="animation-delay: 1.1s;">
+                <span class="font-sans text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] text-brandDark group-hover:text-white transition-colors">Menú</span>
+            </a>
+            <a href="Experiencia_Positano.html" class="loader-menu-item loader-menu-link group flex flex-col items-center justify-center text-center gap-1 py-5 md:py-7 rounded-2xl border border-brandDark/10 bg-white/60 hover:bg-brandDark hover:border-brandDark transition-all duration-300" style="animation-delay: 1.3s;">
+                <span class="font-sans text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] text-brandDark group-hover:text-white transition-colors">Experiencia</span>
+            </a>
+            <a href="Ubicacion_Positano.html" class="loader-menu-item loader-menu-link group flex flex-col items-center justify-center text-center gap-1 py-5 md:py-7 rounded-2xl border border-brandDark/10 bg-white/60 hover:bg-brandDark hover:border-brandDark transition-all duration-300" style="animation-delay: 1.5s;">
+                <span class="font-sans text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] text-brandDark group-hover:text-white transition-colors">Ubicación</span>
+            </a>
+            <a href="Reservas_Positano.html" class="loader-menu-item loader-menu-link group flex flex-col items-center justify-center text-center gap-1 py-5 md:py-7 rounded-2xl border border-brandAccent/40 bg-brandAccent/5 hover:bg-brandAccent hover:border-brandAccent transition-all duration-300" style="animation-delay: 1.7s;">
+                <span class="font-sans text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] text-brandAccent group-hover:text-white transition-colors">Reservar</span>
+            </a>
+        </div>
+
+        <button id="loader-skip" class="loader-skip w-full text-center mt-5 md:mt-7 text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-brandMuted hover:text-brandAccent transition-colors">
+            Explorar el sitio →
+        </button>
+    </nav>
 </div>
     <!-- Navbar Dinámico -->
     <header id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-4 md:py-6">
@@ -154,9 +191,9 @@ body.loading-active {
 
                 <!-- Enlaces Desktop -->
                 <nav class="hidden md:flex space-x-8 lg:space-x-10 items-center">
-                    <a href="Positano.html#experiencia" class="text-xs lg:text-sm font-semibold tracking-widest text-brandLight hover:text-brandAccent transition-colors mix-blend-difference">LA EXPERIENCIA</a>
+                    <a href="Experiencia_Positano.html" class="text-xs lg:text-sm font-semibold tracking-widest text-brandLight hover:text-brandAccent transition-colors mix-blend-difference">LA EXPERIENCIA</a>
                     <a href="MenuPositano.html" class="text-xs lg:text-sm font-semibold tracking-widest text-brandLight hover:text-brandAccent transition-colors mix-blend-difference">MENÚ</a>
-                    <a href="Positano.html#ubicacion" class="text-xs lg:text-sm font-semibold tracking-widest text-brandLight hover:text-brandAccent transition-colors mix-blend-difference">UBICACIÓN</a>
+                    <a href="Ubicacion_Positano.html" class="text-xs lg:text-sm font-semibold tracking-widest text-brandLight hover:text-brandAccent transition-colors mix-blend-difference">UBICACIÓN</a>
                     <a href="Positano.html#reservas" class="bg-brandDark text-brandLight px-6 py-2 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-brandAccent hover:text-white transition-all duration-300 shadow-lg border border-transparent">Reservar</a>
                 </nav>
 
@@ -176,9 +213,9 @@ body.loading-active {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <a href="Positano.html" class="mobile-link font-serif text-2xl text-brandDark hover:text-brandAccent transition-colors">La Experiencia</a>
+            <a href="Experiencia_Positano.html" class="mobile-link font-serif text-2xl text-brandDark hover:text-brandAccent transition-colors">La Experiencia</a>
             <a href="MenuPositano.html" class="mobile-link font-serif text-2xl text-brandDark hover:text-brandAccent transition-colors">Menú</a>
-            <a href="Positano.html#ubicacion" class="mobile-link font-serif text-2xl text-brandDark hover:text-brandAccent transition-colors">Ubicación</a>
+            <a href="Ubicacion_Positano.html" class="mobile-link font-serif text-2xl text-brandDark hover:text-brandAccent transition-colors">Ubicación</a>
             <a href="https://www.instagram.com/positano_01/" target="_blank" class="mobile-link mt-6 bg-brandDark text-brandLight px-8 py-3 rounded-full text-sm uppercase tracking-widest hover:bg-brandAccent hover:text-white transition-all">Siguenos en IG</a>
         </div>
     </header>
@@ -317,7 +354,7 @@ body.loading-active {
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 mb-16 md:mb-20">
                 <!-- Info de Contacto -->
-                <div class="reveal flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                <div id="reservas" class="reveal flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
                     <img src="assets/Positano/positano.jpg" alt="Logo Positano" class="w-20 h-20 md:w-24 md:h-24 rounded-full mb-6 md:mb-8 opacity-90 border-2 border-white/10 bg-white object-cover">
                     <h2 class="font-serif text-3xl md:text-4xl mb-4 md:mb-6 text-white">Bienvenido a Positano</h2>
                     <p class="text-brandMuted mb-6 md:mb-8 font-light text-sm md:text-base max-w-md">Disfruta de la mejor cocina italiana en el corazón de la ciudad. Un espacio diseñado para compartir.</p>
@@ -537,18 +574,30 @@ function dismissLoader() {
     }, 1000);
 }
 
+// Navegación desde el menú de opciones de la pantalla de carga
+document.addEventListener('DOMContentLoaded', () => {
+    const skipBtn = document.getElementById('loader-skip');
+    if (skipBtn) skipBtn.addEventListener('click', dismissLoader);
+
+    document.querySelectorAll('.loader-menu-link[data-loader-scroll]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-loader-scroll');
+            const target = document.getElementById(targetId);
+            dismissLoader();
+            setTimeout(() => {
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 350);
+        });
+    });
+});
+
 // Bloquear scroll al iniciar
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add('loading-active');
 
-    // LÍMITE DE SEGURIDAD: Oculta el loader en un máximo de 3.5 segundos
-    // aunque algún recurso falle en cargar.
-    setTimeout(dismissLoader, 2500);
-});
-
-// Ocultar normalmente si la página carga rápido
-window.addEventListener("load", () => {
-    setTimeout(dismissLoader, 1500);
+    // LÍMITE DE SEGURIDAD: si nadie interactúa con el menú, entra al sitio automáticamente.
+    setTimeout(dismissLoader, 10000);
 });
 
     </script>

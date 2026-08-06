@@ -60,10 +60,6 @@
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
   .nav-link.active { color: #C68A45; }
 
-  #mobileMenu { transform: translateY(-100%); transition: transform .4s ease; }
-  #mobileMenu.open { transform: translateY(0); }
-  body.menu-open { overflow: hidden; }
-
   .counter { font-variant-numeric: tabular-numeric; }
 
   .restaurant-tab { transition: all .3s ease; }
@@ -213,11 +209,11 @@
 <a id="inicio"></a>
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-positano-dark/95 backdrop-blur-md border-b border-positano-gold/20 transition-all duration-300">
-  <div id="headerInner" class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between transition-all duration-300">
+  <div id="headerInner" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-5 flex items-center justify-between transition-all duration-300">
 
     <a href="#inicio" class="text-white relative z-[60]">
-      <div class="font-semibold tracking-[.25em] text-sm text-positano-gold">GRUPO</div>
-      <div class="serif font-semibold tracking-[.1em] text-2xl -mt-1">Positano</div>
+      <div class="font-semibold tracking-[.2em] sm:tracking-[.25em] text-xs sm:text-sm text-positano-gold">GRUPO</div>
+      <div class="serif font-semibold tracking-[.1em] text-xl sm:text-2xl -mt-1">Positano</div>
     </a>
 
     <nav class="hidden lg:flex items-center gap-8 text-[12px] uppercase tracking-wide text-white/90">
@@ -229,20 +225,21 @@
     </nav>
 
     <button id="menuButton" class="lg:hidden text-white relative z-[60]" aria-label="Abrir menú" aria-expanded="false">
-      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+      <svg id="menuIconOpen" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+      <svg id="menuIconClose" class="hidden" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
-</header>
 
-<div id="mobileMenu" class="fixed inset-0 z-50 bg-[#0E0B09] text-white lg:hidden flex items-center justify-center">
-  <nav class="flex flex-col text-center gap-7 serif text-2xl italic tracking-wide">
-    <a href="#inicio" class="mobile-link">Inicio</a>
-    <a href="#nosotros" class="mobile-link">Nosotros</a>
-    <a href="#restaurantes" class="mobile-link">Restaurantes</a>
-    <a href="#contacto" class="mobile-link">Contacto</a>
-    <a href="#trabaja" class="mobile-link">Trabaja con nosotros</a>
-  </nav>
-</div>
+  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out bg-positano-dark/98 border-t border-positano-gold/10">
+    <nav class="flex flex-col text-left px-6 py-2">
+      <a href="#inicio" class="mobile-link py-3 border-b border-white/10 text-sm uppercase tracking-wide text-white/90">Inicio</a>
+      <a href="#nosotros" class="mobile-link py-3 border-b border-white/10 text-sm uppercase tracking-wide text-white/90">Nosotros</a>
+      <a href="#restaurantes" class="mobile-link py-3 border-b border-white/10 text-sm uppercase tracking-wide text-white/90">Restaurantes</a>
+      <a href="#contacto" class="mobile-link py-3 border-b border-white/10 text-sm uppercase tracking-wide text-white/90">Contacto</a>
+      <a href="#trabaja" class="mobile-link py-4 text-center text-sm uppercase tracking-wide text-positano-gold border border-positano-gold/60 mt-3 mb-3 hover:bg-positano-gold hover:text-positano-dark transition">Trabaja con nosotros</a>
+    </nav>
+  </div>
+</header>
 
 <!-- ===== HERO ===== -->
 <section id="Hero" class="relative min-h-[680px] flex items-center overflow-hidden bg-positano-dark">
@@ -736,16 +733,29 @@ window.addEventListener("scroll", () => {
 });
 
 const menuButton = document.getElementById("menuButton"), mobileMenu = document.getElementById("mobileMenu");
+const menuIconOpen = document.getElementById("menuIconOpen"), menuIconClose = document.getElementById("menuIconClose");
+function closeMobileMenu() {
+  mobileMenu.style.maxHeight = null;
+  menuButton.setAttribute("aria-expanded", "false");
+  menuIconOpen.classList.remove("hidden");
+  menuIconClose.classList.add("hidden");
+}
+function openMobileMenu() {
+  mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+  menuButton.setAttribute("aria-expanded", "true");
+  menuIconOpen.classList.add("hidden");
+  menuIconClose.classList.remove("hidden");
+}
 menuButton.addEventListener("click", () => {
-  const open = mobileMenu.classList.toggle("open");
-  document.body.classList.toggle("menu-open");
-  menuButton.setAttribute("aria-expanded", open ? "true" : "false");
+  const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+  isOpen ? closeMobileMenu() : openMobileMenu();
 });
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("mobile-link")) {
-    mobileMenu.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
+  if (e.target.classList.contains("mobile-link")) closeMobileMenu();
+});
+window.addEventListener("resize", () => {
+  if (menuButton.getAttribute("aria-expanded") === "true") {
+    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
   }
 });
 
